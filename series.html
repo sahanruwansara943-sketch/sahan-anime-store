@@ -3,46 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anime Series - Sahan Anime Store</title>
+    <title>Series - Sahan Anime Store</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: '-apple-system', BlinkMacSystemFont, sans-serif; }
         body {
+            /* Nil Pata Premium Liquid Glass Background */
             background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920&auto=format&fit=crop'); 
             background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center;
-            min-height: 100vh; color: #fff; display: flex; flex-direction: column;
+            min-height: 100vh; color: #fff; display: flex; flex-direction: column; overflow-x: hidden;
         }
         .navbar {
             display: flex; justify-content: space-between; align-items: center;
-            background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); padding: 20px 50px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: sticky; top: 0; z-index: 100;
+            background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            padding: 20px 50px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: sticky; top: 0; z-index: 100;
         }
         .logo { font-size: 24px; font-weight: 800; }
-        .logo span { color: #ff4757; text-shadow: 0 0 20px rgba(255, 71, 87, 0.6); }
+        .logo span { color: #ff4757; text-shadow: 0 0 20px rgba(255, 71, 71, 0.6); }
         .nav-links { display: flex; list-style: none; align-items: center; }
         .nav-links li { margin-left: 30px; }
-        .nav-links a { color: rgba(255, 255, 255, 0.9); text-decoration: none; font-size: 15px; font-weight: 600; }
-        .series-section { flex: 1; padding: 60px 20px; max-width: 1200px; width: 90%; margin: 0 auto; text-align: center; }
+        .nav-links a { color: rgba(255, 255, 255, 0.9); text-decoration: none; font-size: 15px; font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover { color: #ff4757; }
+        
+        .series-section { flex: 1; padding: 60px 20px; max-width: 1200px; width: 95%; margin: 0 auto; text-align: center; }
         .series-section h1 { font-size: 42px; font-weight: 800; margin-bottom: 40px; }
         .series-section h1 span { color: #ff4757; text-shadow: 0 0 30px rgba(255, 71, 87, 0.7); }
-        .series-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        .series-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; justify-content: center; }
         .series-card {
-            background-color: rgba(255, 255, 255, 0.04); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 24px; padding: 20px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25); transition: 0.3s; text-align: left;
+            background-color: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px) saturate(150%);
+            -webkit-backdrop-filter: blur(25px) saturate(150%); border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px; padding: 18px; box-shadow: 0 20px 45px rgba(0,0,0,0.3); transition: 0.3s ease; text-align: center;
         }
-        .series-card:hover { transform: translateY(-5px); border-color: #ff4757; background-color: rgba(255, 255, 255, 0.08); }
-        .series-img-box { width: 100%; height: 220px; border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.05); margin-bottom: 20px; }
-        .series-img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .series-card:hover .series-img-box img { transform: scale(1.05); }
-        .series-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 10px; }
-        .series-card p { font-size: 14px; color: rgba(255, 255, 255, 0.75); line-height: 1.5; margin-bottom: 20px; }
-        .watch-btn {
-            display: inline-block; background: rgba(255, 255, 255, 0.1); color: white; text-decoration: none; padding: 10px 0;
-            font-size: 15px; font-weight: 600; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.2); transition: 0.3s; width: 100%; text-align: center;
+        .series-card:hover { transform: translateY(-8px); border-color: #ff4757; }
+        .img-container { width: 100%; height: 200px; border-radius: 16px; overflow: hidden; margin-bottom: 15px; background: rgba(0,0,0,0.1); }
+        .img-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .series-card:hover .img-container img { transform: scale(1.05); }
+        
+        .series-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; color: #fff; }
+        .series-card p { font-size: 13px; color: rgba(255, 255, 255, 0.7); line-height: 1.5; margin-bottom: 20px; height: 60px; overflow: hidden; }
+        
+        .explore-ep-btn {
+            display: block; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: #fff;
+            text-decoration: none; padding: 10px 0; font-size: 13px; font-weight: 600; border-radius: 50px; transition: 0.3s;
         }
-        .watch-btn:hover { background: #ff4757; border-color: #ff4757; box-shadow: 0 8px 20px rgba(255, 71, 87, 0.4); }
+        .explore-ep-btn:hover { background: #ff4757; border-color: #ff4757; box-shadow: 0 8px 20px rgba(255, 71, 87, 0.4); }
     </style>
 </head>
 <body>
+
     <nav class="navbar">
         <div class="logo">Sahan <span>Anime</span></div>
         <ul class="nav-links">
@@ -54,34 +62,49 @@
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
+
     <div class="series-section">
         <h1>Trending Anime <span>Series</span></h1>
         <div class="series-grid">
+            
             <div class="series-card">
-                <div class="series-img-box">
-                    <img src="anime-girl-katana-white-hair-4k-wallpaper-uhdpaper.com-21@2@b.jpg" alt="Series 1">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?q=80&w=500" alt="Katana Chronicles">
                 </div>
                 <h3>Katana Chronicles</h3>
-                <p>Experience the epic dark fantasy journey of legendary samurai and cursed swordsmen fighting for ultimate honor.</p>
-                <a href="#" class="watch-btn">Explore Episodes</a>
+                <p>Experience the epic dark fantasy journey of a legendary samurai and cursed swordsmen fighting for ultimate honor.</p>
+                <a href="https://www.netflix.com/title/81091393" target="_blank" class="explore-ep-btn">Explore Episodes</a>
             </div>
+
             <div class="series-card">
-                <div class="series-img-box">
-                    <img src="anime-guy-sunglasses-4k-wallpaper-uhdpaper.com-232@5@p.jpg" alt="Series 2">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=500" alt="Cyberpunk Cyber City">
                 </div>
                 <h3>Cyberpunk Cyber City</h3>
                 <p>Dive deep into a neon-lit futuristic city where rogue agents and advanced hackers challenge a corrupt world.</p>
-                <a href="#" class="watch-btn">Explore Episodes</a>
+                <a href="https://www.netflix.com/title/81054853" target="_blank" class="explore-ep-btn">Explore Episodes</a>
             </div>
+
             <div class="series-card">
-                <div class="series-img-box">
-                    <img src="torii-gate-alone-mountain-scenery-digital-art-4k-wallpaper-uhdpaper.com-203@2@b.jpg" alt="Series 3">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=500" alt="Shinobi Legacy">
                 </div>
-                <h3>Mystic Torii Gates</h3>
-                <p>Uncover historical spirits, hidden temples, and gateways between the human world and the anime realm.</p>
-                <a href="#" class="watch-btn">Explore Episodes</a>
+                <h3>Shinobi Legacy</h3>
+                <p>Follow the path of a young ninja striving for greatness, mastering mystical elemental arts to protect his village.</p>
+                <a href="https://www.netflix.com/title/70205012" target="_blank" class="explore-ep-btn">Explore Episodes</a>
             </div>
+
+            <div class="series-card">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=500" alt="Shadow Monarch">
+                </div>
+                <h3>Shadow Monarch</h3>
+                <p>Rise from the weakest hunter to the ultimate king of shadows, commanding an army of darkness to conquer dungeons.</p>
+                <a href="https://www.netflix.com/title/81726714" target="_blank" class="explore-ep-btn">Explore Episodes</a>
+            </div>
+
         </div>
     </div>
+
 </body>
 </html>
