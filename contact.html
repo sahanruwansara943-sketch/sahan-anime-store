@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Sahan Anime Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920&auto=format&fit=crop'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(20px) saturate(160%); 
+            -webkit-backdrop-filter: blur(20px) saturate(160%); 
+            padding: 20px 50px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #ff4757; 
+            text-shadow: 0 0 20px rgba(255, 71, 87, 0.6);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff4757;
+        }
+
+        .contact-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        /* විස්තර කාඩ්ස් සෙට් එක */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff4757;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* අයිකන්ස් වල ස්ටයිල්ස් */
+        .info-card i {
+            font-size: 35px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        /* එක එක ඇප් එකට වෙනස් පාටවල් දීලා දිලිසෙන්න හැදුවා මචං */
+        .fa-whatsapp {
+            color: #25D366;
+            text-shadow: 0 0 15px rgba(37, 211, 102, 0.5);
+        }
+
+        .fa-envelope {
+            color: #ea4335;
+            text-shadow: 0 0 15px rgba(234, 67, 53, 0.5);
+        }
+
+        .fa-facebook {
+            color: #1877F2;
+            text-shadow: 0 0 15px rgba(24, 119, 242, 0.5);
+        }
+
+        .info-card h3 {
+            font-size: 15px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-card p {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .info-card a {
+            color: #fff;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .info-card a:hover {
+            color: #ff4757;
+        }
+
+        /* Form Box */
+        .contact-glass-box {
+            background-color: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(35px) saturate(200%);
+            -webkit-backdrop-filter: blur(35px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 30px;
+            padding: 45px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+            text-align: center;
+        }
+
+        .contact-glass-box h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        .contact-glass-box h1 span {
+            color: #ff4757;
+            text-shadow: 0 0 30px rgba(255, 71, 87, 0.7);
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            padding-left: 5px;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 14px 20px;
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #ff4757;
+            box-shadow: 0 0 15px rgba(255, 71, 87, 0.3);
+        }
+
+        .form-group textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #ff4757, #ff6b81);
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(255, 71, 87, 0.4);
+            transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(255, 71, 87, 0.6);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Sahan <span>Anime</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="series.html">Series</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html" style="background: #ff4757; padding: 6px 15px; border-radius: 50px; color: white;">Sign In</a></li>
+        </ul>
+    </nav>
+
+    <div class="contact-wrapper">
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <i class="fab fa-whatsapp"></i>
+                <h3>WhatsApp / Call</h3>
+                <p><a href="https://wa.me/94775138905" target="_blank">0775138905</a></p>
+            </div>
+
+            <div class="info-card">
+                <i class="far fa-envelope"></i>
+                <h3>Gmail Address</h3>
+                <p><a href="mailto:sahanruwansara757@gmail.com">sahanruwansara757@gmail.com</a></p>
+            </div>
+
+            <div class="info-card">
+                <i class="fab fa-facebook"></i>
+                <h3>Facebook</h3>
+                <p><a href="https://www.facebook.com/search/top/?q=sahan%20ruwansara" target="_blank">Sahan Ruwansara</a></p>
+            </div>
+        </div>
+
+        <div class="contact-glass-box">
+            <h1>Send A <span>Message</span></h1>
+            <form action="#">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" placeholder="Type your message here..." required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In / Register - Sahan Anime Store</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: '-apple-system', BlinkMacSystemFont, sans-serif; }
+        body {
+            background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920&auto=format&fit=crop'); 
+            background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center;
+            min-height: 100vh; color: #fff; display: flex; flex-direction: column; overflow-x: hidden;
+            padding-bottom: 60px;
+        }
+        
+        /* 🌐 Navbar Style */
+        .navbar {
+            display: flex; justify-content: space-between; align-items: center;
+            background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            padding: 15px 50px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: sticky; top: 0; z-index: 100;
+        }
+        .logo { font-size: 24px; font-weight: 800; }
+        .logo span { color: #ff4757; text-shadow: 0 0 20px rgba(255, 71, 71, 0.6); }
+        .nav-links { display: flex; list-style: none; align-items: center; }
+        .nav-links li { margin-left: 30px; }
+        .nav-links a { color: rgba(255, 255, 255, 0.9); text-decoration: none; font-size: 15px; font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover { color: #ff4757; }
+
+        /* 🔮 Auth Container Style */
+        .auth-container {
+            display: flex; justify-content: center; align-items: center; padding: 40px 20px;
+        }
+        .auth-card {
+            background-color: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px) saturate(150%);
+            -webkit-backdrop-filter: blur(25px) saturate(150%); border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 32px; padding: 40px; width: 100%; max-width: 420px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4); text-align: center;
+        }
+        .auth-card h2 { font-size: 32px; font-weight: 800; margin-bottom: 10px; }
+        .auth-card h2 span { color: #ff4757; text-shadow: 0 0 20px rgba(255, 71, 87, 0.5); }
+        .auth-card p { color: rgba(255, 255, 255, 0.6); font-size: 14px; margin-bottom: 30px; }
+
+        /* 📝 Form Inputs */
+        .form-group { text-align: left; margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px; color: rgba(255, 255, 255, 0.8); }
+        .form-group input {
+            width: 100%; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 14px 20px; border-radius: 50px; color: #fff; font-size: 14px; outline: none; transition: 0.3s;
+        }
+        .form-group input:focus { border-color: #ff4757; background: rgba(255, 255, 255, 0.08); box-shadow: 0 0 15px rgba(255, 71, 87, 0.2); }
+
+        /* ⚡ Buttons */
+        .auth-btn {
+            width: 100%; background: linear-gradient(135deg, #ff4757, #ff6b81); color: #fff; border: none;
+            padding: 14px; font-size: 15px; font-weight: 700; border-radius: 50px; cursor: pointer;
+            box-shadow: 0 8px 20px rgba(255, 71, 87, 0.3); transition: 0.3s; margin-top: 10px;
+        }
+        .auth-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 25px rgba(255, 71, 87, 0.5); }
+
+        .switch-form { margin-top: 25px; font-size: 13px; color: rgba(255, 255, 255, 0.6); }
+        .switch-form a { color: #ff4757; text-decoration: none; font-weight: 700; transition: 0.2s; }
+        .switch-form a:hover { text-decoration: underline; }
+
+        /* 📊 Admin Registered Users Table Area */
+        .admin-section {
+            max-width: 800px; width: 90%; margin: 40px auto 0 auto;
+            background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .admin-section h3 { font-size: 22px; margin-bottom: 20px; font-weight: 700; text-align: left; }
+        .admin-section h3 span { color: #ff4757; }
+        
+        .user-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+        .user-table th, .user-table td { padding: 14px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .user-table th { color: #ff4757; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; }
+        .user-table td { color: rgba(255,255,255,0.8); }
+        .no-users { text-align: center; color: rgba(255,255,255,0.4); padding: 20px 0; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Sahan <span>Anime</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="series.html">Series</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="auth-container">
+        <div class="auth-card" id="authCard">
+            <h2 id="formTitle">Sign <span>In</span></h2>
+            <p id="formDesc">Welcome back, Otaku! Login to your account.</p>
+            
+            <form id="authForm" onsubmit="handleAuthSubmit(event)">
+                <div class="form-group" id="usernameGroup" style="display: none;">
+                    <label>Username</label>
+                    <input type="text" id="regUsername" placeholder="SahanAnime">
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="authEmail" placeholder="enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="authPassword" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="auth-btn" id="submitBtn">Sign In</button>
+            </form>
+
+            <div class="switch-form">
+                <span id="toggleText">Don't have an account? </span>
+                <a href="#" id="toggleLink" onclick="toggleForm()">Register</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="admin-section">
+        <h3>Admin Dashboard - <span>Registered Users</span></h3>
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody">
+                <tr id="noUsersRow"><td colspan="4" class="no-users">No users registered yet in this session.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let isLogin = true;
+
+        function toggleForm() {
+            const title = document.getElementById('formTitle');
+            const desc = document.getElementById('formDesc');
+            const btn = document.getElementById('submitBtn');
+            const toggleText = document.getElementById('toggleText');
+            const toggleLink = document.getElementById('toggleLink');
+            const usernameGroup = document.getElementById('usernameGroup');
+            const regUsername = document.getElementById('regUsername');
+
+            if (isLogin) {
+                title.innerHTML = 'Register <span>Now</span>';
+                desc.innerText = 'Create your free account and join the club!';
+                btn.innerText = 'Register';
+                toggleText.innerText = 'Already have an account? ';
+                toggleLink.innerText = 'Sign In';
+                
+                usernameGroup.style.display = 'block';
+                regUsername.required = true;
+                isLogin = false;
+            } else {
+                title.innerHTML = 'Sign <span>In</span>';
+                desc.innerText = 'Welcome back, Otaku! Login to your account.';
+                btn.innerText = 'Sign In';
+                toggleText.innerText = "Don't have an account? ";
+                toggleLink.innerText = 'Register';
+                
+                usernameGroup.style.display = 'none';
+                regUsername.required = false;
+                isLogin = true;
+            }
+        }
+
+        // Form එක Submit කරාම Table එකට Data දාන හැටි
+        function handleAuthSubmit(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('authEmail').value;
+            const password = document.getElementById('authPassword').value;
+            const username = document.getElementById('regUsername').value || "N/A";
+            const type = isLogin ? "🔑 Sign In" : "📝 Register";
+
+            // No users කියන පේළිය අයින් කරනවා
+            const noUsersRow = document.getElementById('noUsersRow');
+            if (noUsersRow) noUsersRow.remove();
+
+            // අලුත් පේළියක් Table එකට එකතු කරනවා
+            const tableBody = document.getElementById('userTableBody');
+            const newRow = document.createElement('tr');
+            
+            newRow.innerHTML = `
+                <td style="color: ${isLogin ? '#ff4757' : '#2ed573'}; font-weight: 600;">${type}</td>
+                <td>${username}</td>
+                <td>${email}</td>
+                <td><code>${password}</code></td>
+            `;
+            
+            tableBody.appendChild(newRow);
+
+            // සාර්ථකයි කියලා Alert එකක් දෙනවා
+            alert(`${isLogin ? 'Logged In' : 'Registered'} successfully! Visualized in Admin table below.`);
+            
+            // Form එක Clear කරනවා
+            document.getElementById('authForm').reset();
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Sahan Anime Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: '-apple-system', BlinkMacSystemFont, sans-serif; }
+        body {
+            background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920&auto=format&fit=crop'); 
+            background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center;
+            min-height: 100vh; color: #fff; display: flex; flex-direction: column;
+        }
+        .navbar {
+            display: flex; justify-content: space-between; align-items: center;
+            background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); padding: 20px 50px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: sticky; top: 0; z-index: 100;
+        }
+        .logo { font-size: 24px; font-weight: 800; }
+        .logo span { color: #ff4757; text-shadow: 0 0 20px rgba(255, 71, 87, 0.6); }
+        .nav-links { display: flex; list-style: none; align-items: center; }
+        .nav-links li { margin-left: 30px; }
+        .nav-links a { color: rgba(255, 255, 255, 0.9); text-decoration: none; font-size: 15px; font-weight: 600; }
+        .services-section { flex: 1; padding: 60px 20px; max-width: 1200px; width: 90%; margin: 0 auto; text-align: center; }
+        .services-section h1 { font-size: 42px; font-weight: 800; margin-bottom: 10px; }
+        .services-section h1 span { color: #ff4757; text-shadow: 0 0 30px rgba(255, 71, 87, 0.7); }
+        .subtitle { font-size: 16px; color: rgba(255, 255, 255, 0.7); margin-bottom: 50px; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+        .service-card {
+            background-color: rgba(255, 255, 255, 0.04); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 24px; padding: 40px 25px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25); transition: 0.4s;
+        }
+        .service-card:hover { transform: translateY(-8px); border-color: #ff4757; background-color: rgba(255, 255, 255, 0.08); }
+        .icon-box { width: 70px; height: 70px; background: rgba(255, 71, 87, 0.1); border: 1px solid rgba(255, 71, 87, 0.3); border-radius: 50px; display: flex; justify-content: center; align-items: center; margin: 0 auto 25px auto; transition: 0.3s; }
+        .service-card:hover .icon-box { background: #ff4757; color: #fff; box-shadow: 0 0 20px rgba(255, 71, 87, 0.6); }
+        .icon-box i { font-size: 28px; color: #ff4757; }
+        .service-card:hover .icon-box i { color: #fff; }
+        .service-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 15px; }
+        .service-card p { font-size: 14px; color: rgba(255, 255, 255, 0.75); line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Sahan <span>Anime</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="series.html">Series</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="services-section">
+        <h1>What We <span>Offer</span></h1>
+        <p class="subtitle">Premium digital services tailored to bring you the best experience</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="icon-box"><i class="fas fa-comments"></i></div>
+                <h3>24/7 Support</h3>
+                <p>We are always online! Message us anytime on social media or email for quick assistance.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon-box"><i class="fas fa-camera-retro"></i></div>
+                <h3>Photo Editing</h3>
+                <p>High-quality image tuning, perfect background removal, precise color grading, and custom effects.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon-box"><i class="fas fa-palette"></i></div>
+                <h3>Thumbnail Design</h3>
+                <p>Get highly clickable, eye-catching premium custom thumbnails designed specifically for your channel.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon-box"><i class="fas fa-bolt"></i></div>
+                <h3>Custom Websites</h3>
+                <p>Stunning, responsive and interactive glassmorphic websites built exactly to your preference.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
