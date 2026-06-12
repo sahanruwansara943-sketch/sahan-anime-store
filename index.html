@@ -4,103 +4,147 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sahan Anime Store - Home</title>
+    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: '-apple-system', BlinkMacSystemFont, sans-serif; }
-        body {
-            /* 🌌 උඹේ පරණ නිල් පාට Premium Liquid Glass Background එක */
-            background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920&auto=format&fit=crop'); 
-            background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center;
-            min-height: 100vh; color: #fff; display: flex; flex-direction: column; overflow-x: hidden;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
-        
-        /* 🌐 Navbar Style */
-        .navbar {
-            display: flex; justify-content: space-between; align-items: center;
-            background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            padding: 15px 50px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: sticky; top: 0; z-index: 100;
-        }
-        .logo { font-size: 24px; font-weight: 800; }
-        .logo span { color: #ff4757; text-shadow: 0 0 20px rgba(255, 71, 71, 0.6); }
-        
-        .nav-right { display: flex; align-items: center; gap: 30px; }
-        .nav-links { display: flex; list-style: none; align-items: center; }
-        .nav-links li { margin-left: 30px; }
-        .nav-links a { color: rgba(255, 255, 255, 0.9); text-decoration: none; font-size: 15px; font-weight: 600; transition: 0.3s; }
-        .nav-links a:hover { color: #ff4757; }
-        
-        /* 🔘 Sign In & Register Buttons */
-        .auth-buttons { display: flex; gap: 12px; align-items: center; }
-        .btn-signin {
-            color: rgba(255, 255, 255, 0.9); text-decoration: none; font-size: 14px; font-weight: 600;
-            padding: 8px 16px; transition: 0.3s;
-        }
-        .btn-signin:hover { color: #ff4757; }
-        .btn-register {
-            background: #ff4757; color: #fff; text-decoration: none; font-size: 14px; font-weight: 600;
-            padding: 8px 20px; border-radius: 50px; box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3); transition: 0.3s;
-        }
-        .btn-register:hover { background: #ff6b81; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 71, 87, 0.5); }
-        
-        /* 🚀 Hero Section Content */
-        .hero-section {
-            flex: 1; display: flex; justify-content: space-between; align-items: center;
-            max-width: 1200px; width: 90%; margin: 0 auto; padding: 40px 20px; gap: 50px;
-        }
-        .hero-content { flex: 1; text-align: left; }
-        .hero-content h1 { font-size: 56px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
-        .hero-content h1 span { color: #ff4757; text-shadow: 0 0 30px rgba(255, 71, 87, 0.5); }
-        .hero-content p { font-size: 18px; color: rgba(255, 255, 255, 0.8); margin-bottom: 40px; line-height: 1.6; }
-        
-        /* ⚡ Main CTA Button */
-        .cta-btn {
-            display: inline-block; background: linear-gradient(135deg, #ff4757, #ff6b81); color: #fff; text-decoration: none;
-            padding: 16px 35px; font-size: 16px; font-weight: 700; border-radius: 50px;
-            box-shadow: 0 10px 25px rgba(255, 71, 87, 0.4); transition: 0.3s ease;
-        }
-        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255, 71, 87, 0.6); }
 
-        /* 📸 Right Side Anime Image Card */
-        .hero-image { flex: 1; display: flex; justify-content: center; position: relative; }
-        .hero-image img { 
-            width: 100%; max-width: 450px; border-radius: 32px; 
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.15);
-            transition: 0.5s ease;
+        body {
+            background: linear-gradient(135deg, #ff7979, #ea2027, #06b6d4, #4f46e5);
+            background-size: 400% 400%;
+            animation: waveAnimation 15s ease infinite;
+            min-height: 100vh;
+            color: #ffffff;
+            overflow-x: hidden;
+            padding-top: 20px;
         }
-        .hero-image img:hover { transform: translateY(-10px) rotate(2deg); }
+
+        @keyframes waveAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* LIQUID GLASS NAVIGATION BAR */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.08) !important;
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 15px 4%;
+            width: 88%;
+            max-width: 1300px;
+            margin: 0 auto 30px auto;
+            border-radius: 50px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .logo { font-size: 24px; font-weight: 800; color: #ffffff; }
+        .logo span { color: #ff4757; }
+
+        nav ul { display: flex; list-style: none; align-items: center; }
+        nav ul li { margin: 0 14px; }
+        nav ul li a {
+            color: #ffffff !important;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+        nav ul li a:hover, nav ul li a.active { color: #ff4757 !important; opacity: 1; }
+
+        .register-btn {
+            background: #ff4757 !important;
+            color: #ffffff !important;
+            padding: 8px 20px;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+        }
+
+        /* HERO CONTENT AREA */
+        .hero-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 50px;
+        }
+
+        .hero-left { flex: 1; max-width: 600px; }
+        .hero-left h1 { font-size: 64px; font-weight: 800; line-height: 1.15; margin-bottom: 20px; }
+        .hero-left h1 span { color: #ff4757; }
+        .hero-left p { font-size: 18px; line-height: 1.6; opacity: 0.9; margin-bottom: 35px; }
+
+        .explore-btn {
+            background: #ff4757; color: #ffffff; border: none; padding: 15px 35px;
+            font-size: 16px; font-weight: 600; border-radius: 25px; cursor: pointer;
+            box-shadow: 0 8px 20px rgba(255, 71, 87, 0.35);
+        }
+
+        .hero-right-slider {
+            width: 100%; max-width: 440px; height: 540px; overflow: hidden;
+            border-radius: 35px; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .inner-slider { display: flex; width: 300%; height: 100%; animation: sideImageSlide 12s infinite ease-in-out; }
+        .inner-slider img { width: 33.333%; height: 100%; object-fit: cover; }
+
+        @keyframes sideImageSlide {
+            0% { transform: translateX(0%); }
+            28% { transform: translateX(0%); }
+            33% { transform: translateX(-33.333%); }
+            61% { transform: translateX(-33.333%); }
+            66% { transform: translateX(-66.666%); }
+            94% { transform: translateX(-66.666%); }
+            100% { transform: translateX(0%); }
+        }
+
+        @media (max-width: 968px) {
+            nav ul { display: none; }
+            .hero-container { flex-direction: column; text-align: center; }
+            .hero-left h1 { font-size: 44px; }
+            .hero-right-slider { height: 460px; max-width: 350px; }
+        }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
+    <nav>
         <div class="logo">Sahan <span>Anime</span></div>
-        
-        <div class="nav-right">
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="series.html">Series</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            
-            <div class="auth-buttons">
-                <a href="login.html" class="btn-signin">Sign In</a>
-                <a href="register.html" class="btn-register">Register</a>
-            </div>
-        </div>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="series.html">Series</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Sign In</a></li>
+            <li><a href="register.html" class="register-btn">Register</a></li>
+        </ul>
     </nav>
 
-    <div class="hero-section">
-        <div class="hero-content">
-            <h1>Welcome to Sahan <br><span>Anime Store</span></h1>
+    <div class="hero-container">
+        <div class="hero-left">
+            <h1>Welcome to<br>Sahan <span>Anime Store</span></h1>
             <p>Explore the ultimate universe of your favorite anime series, stunning high-quality gallery arts, and premium streaming experiences right here.</p>
-            <a href="series.html" class="cta-btn">Explore Trending Series</a>
+            <button class="explore-btn" onclick="window.location.href='series.html'">Explore Trending Series</button>
         </div>
-        
-        <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600" alt="Anime Hero Art">
+        <div class="hero-right-slider">
+            <div class="inner-slider">
+                <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=600&auto=format&fit=crop" alt="Anime 1">
+                <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600&auto=format&fit=crop" alt="Anime 2">
+                <img src="https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?q=80&w=600&auto=format&fit=crop" alt="Anime 3">
+            </div>
         </div>
     </div>
 

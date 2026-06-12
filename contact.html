@@ -4,108 +4,310 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Sahan Anime Store</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: '-apple-system', BlinkMacSystemFont, sans-serif; }
+        /* --- 1. මූලික පසුබිම (Liquid Wave Gradient) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
         body {
-            background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920&auto=format&fit=crop'); 
-            background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center;
-            min-height: 100vh; color: #fff; display: flex; flex-direction: column;
+            background: linear-gradient(135deg, #ff7979, #ea2027, #06b6d4, #4f46e5);
+            background-size: 400% 400%;
+            animation: waveAnimation 15s ease infinite;
+            min-height: 100vh;
+            color: #ffffff;
+            overflow-x: hidden;
+            padding-top: 20px;
         }
-        .navbar {
-            display: flex; justify-content: space-between; align-items: center;
-            background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); padding: 20px 50px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: sticky; top: 0; z-index: 100;
+
+        @keyframes waveAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        .logo { font-size: 24px; font-weight: 800; }
-        .logo span { color: #ff4757; text-shadow: 0 0 20px rgba(255, 71, 87, 0.6); }
-        .nav-links { display: flex; list-style: none; align-items: center; }
-        .nav-links li { margin-left: 30px; }
-        .nav-links a { color: rgba(255, 255, 255, 0.9); text-decoration: none; font-size: 15px; font-weight: 600; }
-        .contact-wrapper { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; }
-        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 900px; width: 100%; margin-bottom: 40px; }
+
+        /* --- 2. LIQUID GLASS NAVIGATION BAR --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.08) !important;
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 15px 4%;
+            width: 88%;
+            max-width: 1300px;
+            margin: 0 auto 40px auto;
+            border-radius: 50px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #ff4757;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 0 14px;
+        }
+
+        nav ul li a {
+            color: #ffffff !important;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            opacity: 1;
+            color: #ff4757 !important;
+        }
+
+        .register-btn {
+            background: #ff4757 !important;
+            color: #ffffff !important;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+        }
+
+        /* --- 3. CONTACT CONTENT CONTAINER --- */
+        .contact-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 4% 60px 4%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* උඩින් තියෙන Info Cards 3 (Row එකක් විදිහට) */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            width: 100%;
+            margin-bottom: 35px;
+        }
+
         .info-card {
-            background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 20px; padding: 25px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.2); transition: 0.3s;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 25px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
-        .info-card:hover { transform: translateY(-5px); border-color: #ff4757; background: rgba(255, 255, 255, 0.08); }
-        .info-card i { font-size: 35px; margin-bottom: 15px; display: inline-block; }
-        .fa-whatsapp { color: #25D366; text-shadow: 0 0 15px rgba(37, 211, 102, 0.5); }
-        .fa-envelope { color: #ea4335; text-shadow: 0 0 15px rgba(234, 67, 53, 0.5); }
-        .fa-facebook { color: #1877F2; text-shadow: 0 0 15px rgba(24, 119, 242, 0.5); }
-        .info-card h3 { font-size: 15px; color: rgba(255,255,255,0.6); margin-bottom: 8px; text-transform: uppercase; }
-        .info-card p { font-size: 16px; font-weight: 600; }
-        .info-card a { color: #fff; text-decoration: none; transition: 0.2s; }
-        .info-card a:hover { color: #ff4757; }
-        .contact-glass-box {
-            background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(35px); border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 30px; padding: 45px; max-width: 600px; width: 100%; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35); text-align: center;
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.12);
         }
-        .contact-glass-box h1 { font-size: 36px; font-weight: 800; margin-bottom: 15px; }
-        .contact-glass-box h1 span { color: #ff4757; text-shadow: 0 0 30px rgba(255, 71, 87, 0.7); }
-        .form-group { margin-bottom: 22px; text-align: left; }
-        .form-group label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; padding-left: 5px; }
+
+        /* Icons Styles */
+        .info-card i {
+            font-size: 26px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .icon-wa { color: #25D366; }
+        .icon-mail { color: #ff4757; }
+        .icon-fb { color: #1877F2; }
+
+        .info-card h4 {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.6;
+            margin-bottom: 6px;
+        }
+
+        .info-card p {
+            font-size: 15px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        /* --- 4. SEND A MESSAGE FORM CARD --- */
+        .message-box {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 35px;
+            padding: 40px;
+            width: 100%;
+            max-width: 580px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        .message-box h2 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 30px;
+            letter-spacing: -0.5px;
+        }
+
+        .message-box h2 span {
+            color: #ff4757;
+        }
+
+        /* Form Controls */
+        .form-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 12px;
+            font-weight: 700;
+            opacity: 0.8;
+            margin-bottom: 8px;
+            display: block;
+            padding-left: 5px;
+        }
+
         .form-group input, .form-group textarea {
-            width: 100%; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 12px; padding: 14px 20px; color: #fff; font-size: 15px; outline: none; transition: 0.3s;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 14px 18px;
+            font-size: 14px;
+            color: #ffffff;
+            outline: none;
+            transition: all 0.3s ease;
         }
-        .form-group input:focus, .form-group textarea:focus { background: rgba(255, 255, 255, 0.1); border-color: #ff4757; box-shadow: 0 0 15px rgba(255, 71, 87, 0.3); }
-        .form-group textarea { resize: none; height: 100px; }
-        .submit-btn {
-            width: 100%; background: linear-gradient(135deg, #ff4757, #ff6b81); color: white; border: none; padding: 15px;
-            font-size: 16px; font-weight: 700; border-radius: 50px; cursor: pointer; box-shadow: 0 10px 25px rgba(255, 71, 87, 0.4); transition: 0.3s;
+
+        .form-group input:focus, .form-group textarea:focus {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
         }
-        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 15px 35px rgba(255, 71, 87, 0.6); }
+
+        .form-group textarea {
+            height: 120px;
+            resize: none;
+        }
+
+        /* Send Message Button */
+        .send-btn {
+            background: #ff4757;
+            color: #ffffff;
+            border: none;
+            width: 100%;
+            padding: 15px 0;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(255, 71, 87, 0.4);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 71, 87, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .message-box { padding: 30px 20px; }
+            .message-box h2 { font-size: 26px; }
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar">
+
+    <nav>
         <div class="logo">Sahan <span>Anime</span></div>
-        <ul class="nav-links">
+        <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="series.html">Series</a></li>
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+            <li><a href="login.html">Sign In</a></li>
+            <li><a href="register.html" class="register-btn">Register</a></li>
         </ul>
     </nav>
-    <div class="contact-wrapper">
+
+    <section class="contact-section">
+        
         <div class="info-grid">
             <div class="info-card">
-                <i class="fab fa-whatsapp"></i>
-                <h3>WhatsApp / Call</h3>
-                <p><a href="https://wa.me/94775138905" target="_blank">0775138905</a></p>
+                <i class="fa-brands fa-whatsapp icon-wa"></i>
+                <h4>Whatsapp / Call</h4>
+                <p>0775138905</p>
             </div>
             <div class="info-card">
-                <i class="far fa-envelope"></i>
-                <h3>Gmail Address</h3>
-                <p><a href="mailto:sahanruwansara757@gmail.com">sahanruwansara757@gmail.com</a></p>
+                <i class="fa-solid fa-envelope icon-mail"></i>
+                <h4>Gmail Address</h4>
+                <p>sahanruwansara757@gmail.com</p>
             </div>
             <div class="info-card">
-                <i class="fab fa-facebook"></i>
-                <h3>Facebook</h3>
-                <p><a href="https://www.facebook.com/search/top/?q=sahan%20ruwansara" target="_blank">Sahan Ruwansara</a></p>
+                <i class="fa-brands fa-facebook icon-fb"></i>
+                <h4>Facebook</h4>
+                <p>Sahan Ruwansara</p>
             </div>
         </div>
-        <div class="contact-glass-box">
-            <h1>Send A <span>Message</span></h1>
+
+        <div class="message-box">
+            <h2>Send A <span>Message</span></h2>
+            
             <form action="#">
                 <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" placeholder="Enter your name" required>
+                    <label>Your Name</label>
+                    <input type="text" placeholder="Enter your name" required>
                 </div>
+                
                 <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" placeholder="Enter your email" required>
+                    <label>Email Address</label>
+                    <input type="email" placeholder="Enter your email" required>
                 </div>
+                
                 <div class="form-group">
-                    <label for="message">Your Message</label>
-                    <textarea id="message" placeholder="Type your message here..." required></textarea>
+                    <label>Your Message</label>
+                    <textarea placeholder="Type your message here..." required></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Send Message</button>
+                
+                <button type="submit" class="send-btn">Send Message</button>
             </form>
         </div>
-    </div>
+
+    </section>
+
 </body>
 </html>

@@ -3,108 +3,271 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Series - Sahan Anime Store</title>
+    <title>Sahan Anime Store - Series</title>
+    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: '-apple-system', BlinkMacSystemFont, sans-serif; }
+        /* --- 1. මූලික පසුබිම (Liquid Wave Gradient) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
         body {
-            /* Nil Pata Premium Liquid Glass Background */
-            background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920&auto=format&fit=crop'); 
-            background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center;
-            min-height: 100vh; color: #fff; display: flex; flex-direction: column; overflow-x: hidden;
+            background: linear-gradient(135deg, #ff7979, #ea2027, #06b6d4, #4f46e5);
+            background-size: 400% 400%;
+            animation: waveAnimation 15s ease infinite;
+            min-height: 100vh;
+            color: #ffffff;
+            overflow-x: hidden;
+            padding-top: 20px;
         }
-        .navbar {
-            display: flex; justify-content: space-between; align-items: center;
-            background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            padding: 20px 50px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: sticky; top: 0; z-index: 100;
+
+        @keyframes waveAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        .logo { font-size: 24px; font-weight: 800; }
-        .logo span { color: #ff4757; text-shadow: 0 0 20px rgba(255, 71, 71, 0.6); }
-        .nav-links { display: flex; list-style: none; align-items: center; }
-        .nav-links li { margin-left: 30px; }
-        .nav-links a { color: rgba(255, 255, 255, 0.9); text-decoration: none; font-size: 15px; font-weight: 600; transition: 0.3s; }
-        .nav-links a:hover { color: #ff4757; }
-        
-        .series-section { flex: 1; padding: 60px 20px; max-width: 1200px; width: 95%; margin: 0 auto; text-align: center; }
-        .series-section h1 { font-size: 42px; font-weight: 800; margin-bottom: 40px; }
-        .series-section h1 span { color: #ff4757; text-shadow: 0 0 30px rgba(255, 71, 87, 0.7); }
-        
-        .series-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; justify-content: center; }
-        .series-card {
-            background-color: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px) saturate(150%);
-            -webkit-backdrop-filter: blur(25px) saturate(150%); border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 24px; padding: 18px; box-shadow: 0 20px 45px rgba(0,0,0,0.3); transition: 0.3s ease; text-align: center;
+
+        /* --- 2. LIQUID GLASS NAVIGATION BAR --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.08) !important;
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 15px 4%;
+            width: 88%;
+            max-width: 1300px;
+            margin: 0 auto 60px auto;
+            border-radius: 50px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
         }
-        .series-card:hover { transform: translateY(-8px); border-color: #ff4757; }
-        .img-container { width: 100%; height: 200px; border-radius: 16px; overflow: hidden; margin-bottom: 15px; background: rgba(0,0,0,0.1); }
-        .img-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .series-card:hover .img-container img { transform: scale(1.05); }
-        
-        .series-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; color: #fff; }
-        .series-card p { font-size: 13px; color: rgba(255, 255, 255, 0.7); line-height: 1.5; margin-bottom: 20px; height: 60px; overflow: hidden; }
-        
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #ff4757;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 0 14px;
+        }
+
+        nav ul li a {
+            color: #ffffff !important;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            opacity: 1;
+            color: #ff4757 !important;
+        }
+
+        .register-btn {
+            background: #ff4757 !important;
+            color: #ffffff !important;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+        }
+
+        /* --- 3. TRENDING ANIME SERIES CONTENT AREA --- */
+        .series-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 4% 60px 4%;
+            text-align: center;
+        }
+
+        /* Heading Style */
+        .series-section h1 {
+            font-size: 52px;
+            font-weight: 800;
+            margin-bottom: 40px;
+            letter-spacing: -0.5px;
+        }
+
+        .series-section h1 span {
+            color: #ff4757; /* Series කෑල්ල විතරක් රතු පාටින් */
+        }
+
+        /* Series Grid සෙටප් එක */
+        .series-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            width: 100%;
+        }
+
+        /* Anime Card එක (Exact Glass Look) */
+        .anime-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 30px;
+            padding: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        /* කාඩ් එක උඩට ඇඟිල්ල තියද්දී ලස්සනට ඉස්සෙන ඉෆෙක්ට් එක */
+        .anime-card:hover {
+            transform: translateY(-12px);
+            background: rgba(255, 255, 255, 0.14);
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+        }
+
+        /* කාඩ් එක ඇතුළේ තියෙන පින්තූරය */
+        .anime-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* ඇනිමේ නම */
+        .anime-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        /* ඇනිමේ විස්තරය */
+        .anime-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.75;
+            margin-bottom: 25px;
+            flex-grow: 1; /* ඔක්කොම බටන් එකම ලෙවල් එකකට තියන්න */
+        }
+
+        /* Explore Episodes බටන් එක (Neon Neon Glowing Style) */
         .explore-ep-btn {
-            display: block; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: #fff;
-            text-decoration: none; padding: 10px 0; font-size: 13px; font-weight: 600; border-radius: 50px; transition: 0.3s;
+            background: rgba(6, 182, 212, 0.2);
+            color: #06b6d4;
+            border: 1px solid rgba(6, 182, 212, 0.4);
+            padding: 12px 0;
+            width: 100%;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.1);
         }
-        .explore-ep-btn:hover { background: #ff4757; border-color: #ff4757; box-shadow: 0 8px 20px rgba(255, 71, 87, 0.4); }
+
+        /* පළවෙනි කාඩ් එකේ බටන් එක විතරක් Neon Cyan/Blue විදිහට තියන්න */
+        .btn-cyan {
+            background: rgba(6, 182, 212, 0.2);
+            color: #06b6d4;
+            border-color: rgba(6, 182, 212, 0.4);
+        }
+        .anime-card:hover .btn-cyan {
+            background: #06b6d4;
+            color: #ffffff;
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.5);
+        }
+
+        /* අනිත් කාඩ් වල බටන් රෝස/රතු පාට Neon විදිහට තියන්න */
+        .btn-pink {
+            background: rgba(234, 32, 39, 0.2);
+            color: #ff4757;
+            border-color: rgba(234, 32, 39, 0.4);
+        }
+        .anime-card:hover .btn-pink {
+            background: #ff4757;
+            color: #ffffff;
+            box-shadow: 0 8px 25px rgba(255, 71, 87, 0.5);
+        }
+
+        /* Responsive Settings */
+        @media (max-width: 968px) {
+            nav { width: 95%; padding: 15px 5%; }
+            .series-section h1 { font-size: 38px; }
+            nav ul { display: none; }
+        }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
+    <nav>
         <div class="logo">Sahan <span>Anime</span></div>
-        <ul class="nav-links">
+        <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="services.html">Services</a></li>
-            <li><a href="series.html">Series</a></li>
+            <li><a href="series.html" class="active">Series</a></li>
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Sign In</a></li>
+            <li><a href="register.html" class="register-btn">Register</a></li>
         </ul>
     </nav>
 
-    <div class="series-section">
+    <section class="series-section">
         <h1>Trending Anime <span>Series</span></h1>
+
         <div class="series-grid">
             
-            <div class="series-card">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?q=80&w=500" alt="Katana Chronicles">
-                </div>
+            <div class="anime-card">
+                <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=600&auto=format&fit=crop" class="anime-img" alt="Katana Chronicles">
                 <h3>Katana Chronicles</h3>
-                <p>Experience the epic dark fantasy journey of a legendary samurai and cursed swordsmen fighting for ultimate honor.</p>
-                <a href="https://www.netflix.com/title/81091393" target="_blank" class="explore-ep-btn">Explore Episodes</a>
+                <p>Experience the epic dark fantasy journey of a legendary samurai and cursed swordsmen fighting for ultimate peace.</p>
+                <button class="explore-ep-btn btn-cyan">Explore Episodes</button>
             </div>
 
-            <div class="series-card">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=500" alt="Cyberpunk Cyber City">
-                </div>
+            <div class="anime-card">
+                <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=600&auto=format&fit=crop" class="anime-img" alt="Cyberpunk Cyber City">
                 <h3>Cyberpunk Cyber City</h3>
                 <p>Dive deep into a neon-lit futuristic city where rogue agents and advanced hackers challenge a corrupt world.</p>
-                <a href="https://www.netflix.com/title/81054853" target="_blank" class="explore-ep-btn">Explore Episodes</a>
+                <button class="explore-ep-btn btn-pink">Explore Episodes</button>
             </div>
 
-            <div class="series-card">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=500" alt="Shinobi Legacy">
-                </div>
+            <div class="anime-card">
+                <img src="https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?q=80&w=600&auto=format&fit=crop" class="anime-img" alt="Shinobi Legacy">
                 <h3>Shinobi Legacy</h3>
                 <p>Follow the path of a young ninja striving for greatness, mastering mystical elemental arts to protect his village.</p>
-                <a href="https://www.netflix.com/title/70205012" target="_blank" class="explore-ep-btn">Explore Episodes</a>
+                <button class="explore-ep-btn btn-pink">Explore Episodes</button>
             </div>
 
-            <div class="series-card">
-                <div class="img-container">
-                    <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=500" alt="Shadow Monarch">
-                </div>
+            <div class="anime-card">
+                <img src="https://images.unsplash.com/photo-1618336753974-aae8e04506aa?q=80&w=600&auto=format&fit=crop" class="anime-img" alt="Shadow Monarch">
                 <h3>Shadow Monarch</h3>
-                <p>Rise from the weakest hunter to the ultimate king of shadows, commanding an army of darkness to conquer dungeons.</p>
-                <a href="https://www.netflix.com/title/81726714" target="_blank" class="explore-ep-btn">Explore Episodes</a>
+                <p>Rise from the weakest hunter to the ultimate king of shadows, commanding an army of darkness to conquer mythical dungeons.</p>
+                <button class="explore-ep-btn btn-pink">Explore Episodes</button>
             </div>
 
         </div>
-    </div>
+    </section>
 
 </body>
 </html>
